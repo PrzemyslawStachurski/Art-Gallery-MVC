@@ -1,0 +1,84 @@
+﻿@model IEnumerable<MVC.Models.ArtPiece>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Info)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorsNote)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeOfArt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Style)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reserved)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PicUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Horizontal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Info)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorsNote)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeOfArt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Style)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reserved)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PicUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Horizontal)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ArtPieceId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ArtPieceId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ArtPieceId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
