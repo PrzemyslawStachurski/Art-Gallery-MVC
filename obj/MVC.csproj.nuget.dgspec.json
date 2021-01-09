@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Repozytorium\\MVC\\MVC\\MVC.csproj": {}
+    "C:\\Users\\przem\\OneDrive\\Desktop\\MVC zaliczenie repo\\Art-Gallery-MVC\\MVC.csproj": {}
   },
   "projects": {
-    "F:\\Repozytorium\\MVC\\MVC\\MVC.csproj": {
+    "C:\\Users\\przem\\OneDrive\\Desktop\\MVC zaliczenie repo\\Art-Gallery-MVC\\MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Repozytorium\\MVC\\MVC\\MVC.csproj",
+        "projectUniqueName": "C:\\Users\\przem\\OneDrive\\Desktop\\MVC zaliczenie repo\\Art-Gallery-MVC\\MVC.csproj",
         "projectName": "MVC",
-        "projectPath": "F:\\Repozytorium\\MVC\\MVC\\MVC.csproj",
-        "packagesPath": "C:\\Users\\Maciek\\.nuget\\packages\\",
-        "outputPath": "F:\\Repozytorium\\MVC\\MVC\\obj\\",
+        "projectPath": "C:\\Users\\przem\\OneDrive\\Desktop\\MVC zaliczenie repo\\Art-Gallery-MVC\\MVC.csproj",
+        "packagesPath": "C:\\Users\\przem\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\przem\\OneDrive\\Desktop\\MVC zaliczenie repo\\Art-Gallery-MVC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Maciek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\przem\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -85,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

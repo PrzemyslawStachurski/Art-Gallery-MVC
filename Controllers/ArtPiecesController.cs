@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +15,12 @@ namespace MVC.Controllers
     public class ArtPiecesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public ArtPiecesController(ApplicationDbContext context)
+        public ArtPiecesController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            this._hostEnvironment = hostEnvironment;
         }
 
         // GET: ArtPieces
@@ -54,10 +58,22 @@ namespace MVC.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ArtPieceId,Author,Info,ModifiedDate,AuthorsNote,TypeOfArt,Style,Reserved,PicUrl,Horizontal")] ArtPiece artPiece)
+        public async Task<IActionResult> Create([Bind("ArtPieceId,Author,Info,ModifiedDate,AuthorsNote,TypeOfArt,Style,Reserved,PictureFile,Horizontal")] ArtPiece artPiece)
         {
             if (ModelState.IsValid)
-            {
+            {   // saving pictures of art pieces to wwwroot/StoredPictures 
+                string wwwRootPath = _hostEnvironment.WebRootPath;
+                string fileName = Path.GetFileNameWithoutExtension(artPiece.PictureFile.FileName);
+                string extension = Path.GetExtension(artPiece.PictureFile.FileName);
+                artPiece.PicUrl = fileName = fileName + DateTime.Now.ToString("yymmss") + extension;
+                string path = Path.Combine(wwwRootPath + "/StoredPictures/", fileName);
+
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await artPiece.PictureFile.CopyToAsync(fileStream);
+                }
+
+
                 _context.Add(artPiece);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

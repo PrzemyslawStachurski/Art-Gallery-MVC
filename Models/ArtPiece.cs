@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -34,14 +36,13 @@ namespace MVC.Models
 
         [DisplayName("Is reserved")]
         public bool Reserved { get; set; }
-
+        [DisplayName("Picture URL")]
         public string PicUrl { get; set; }
+
         public bool Horizontal { get; set; }
 
-        public ArtPiece()
-        {
-
-        }
-
+        [NotMapped]
+        [DisplayName("Upload picture of your piece of art")]
+        public IFormFile PictureFile { get; set; }
     }
 }
