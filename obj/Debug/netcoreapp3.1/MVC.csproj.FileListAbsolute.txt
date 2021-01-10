@@ -388,3 +388,8 @@ C:\Users\przem\OneDrive\Desktop\MVC zaliczenie repo\Art-Gallery-MVC\obj\Debug\ne
 C:\Users\przem\OneDrive\Desktop\MVC zaliczenie repo\Art-Gallery-MVC\obj\Debug\netcoreapp3.1\MVC.dll
 C:\Users\przem\OneDrive\Desktop\MVC zaliczenie repo\Art-Gallery-MVC\obj\Debug\netcoreapp3.1\MVC.pdb
 C:\Users\przem\OneDrive\Desktop\MVC zaliczenie repo\Art-Gallery-MVC\obj\Debug\netcoreapp3.1\MVC.genruntimeconfig.cache
+C:\Users\przem\OneDrive\Desktop\MVC zaliczenie repo\Art-Gallery-MVC\obj\Debug\netcoreapp3.1\Razor\Views\News\Create.cshtml.g.cs
+C:\Users\przem\OneDrive\Desktop\MVC zaliczenie repo\Art-Gallery-MVC\obj\Debug\netcoreapp3.1\Razor\Views\News\Delete.cshtml.g.cs
+C:\Users\przem\OneDrive\Desktop\MVC zaliczenie repo\Art-Gallery-MVC\obj\Debug\netcoreapp3.1\Razor\Views\News\Details.cshtml.g.cs
+C:\Users\przem\OneDrive\Desktop\MVC zaliczenie repo\Art-Gallery-MVC\obj\Debug\netcoreapp3.1\Razor\Views\News\Edit.cshtml.g.cs
+C:\Users\przem\OneDrive\Desktop\MVC zaliczenie repo\Art-Gallery-MVC\obj\Debug\netcoreapp3.1\Razor\Views\News\Index.cshtml.g.cs

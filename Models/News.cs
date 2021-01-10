@@ -16,7 +16,7 @@ namespace MVC.Models
         [DisplayName("Author")]
         public string NewsAuthor { get; set; }
 
-        [DisplayName("Author")]
+        [DisplayName("Content")]
         public string Content { get; set; }
 
         [DataType(DataType.DateTime)]
