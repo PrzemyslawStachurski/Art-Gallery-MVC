@@ -15,5 +15,7 @@ namespace MVC.Data
         }
 
         public DbSet<MVC.Models.ArtPiece> ArtPiece { get; set; }
+
+        public DbSet<MVC.Models.News> News { get; set; }
     }
 }
