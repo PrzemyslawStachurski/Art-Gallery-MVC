@@ -193,3 +193,4 @@ F:\Repozytorium\MVC\MVC\obj\Debug\netcoreapp3.1\Razor\Views\ArtPieces\Delete.csh
 F:\Repozytorium\MVC\MVC\obj\Debug\netcoreapp3.1\Razor\Views\ArtPieces\Details.cshtml.g.cs
 F:\Repozytorium\MVC\MVC\obj\Debug\netcoreapp3.1\Razor\Views\ArtPieces\Edit.cshtml.g.cs
 F:\Repozytorium\MVC\MVC\obj\Debug\netcoreapp3.1\Razor\Views\ArtPieces\Index.cshtml.g.cs
+F:\Repozytorium\MVC\MVC\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Create.cshtml.g.cs
