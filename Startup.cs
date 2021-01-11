@@ -10,6 +10,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MVC.Data;
+using MVC.Models;
+using MVC.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace MVC
 {
@@ -25,8 +28,17 @@ namespace MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddHttpClient();
+
+            services.AddDefaultIdentity<User>(options => {
+                options.Password.RequireLowercase = false; //do zmiany
+                options.Password.RequireUppercase = false;
+                options.SignIn.RequireConfirmedAccount = false;
+                options.Password.RequireNonAlphanumeric = false;
+            }).AddRoles<IdentityRole>().AddEntityFrameworkStores<MVCAuthDbContext>();
             services.AddControllersWithViews();
-            services.AddRazorPages();
+            services.AddRazorPages().AddRazorRuntimeCompilation();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("ApplicationDbContext")));
@@ -48,7 +60,10 @@ namespace MVC
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+
+
             app.UseRouting();
+            app.UseAuthentication();
 
             app.UseAuthentication();
             app.UseAuthorization();

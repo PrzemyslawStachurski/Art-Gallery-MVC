@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\przem\\OneDrive\\Desktop\\MVC zaliczenie repo\\Art-Gallery-MVC\\MVC.csproj": {}
+    "/Users/mateuszsobczyk/Desktop/Art-Gallery-MVC/MVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\przem\\OneDrive\\Desktop\\MVC zaliczenie repo\\Art-Gallery-MVC\\MVC.csproj": {
+    "/Users/mateuszsobczyk/Desktop/Art-Gallery-MVC/MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\przem\\OneDrive\\Desktop\\MVC zaliczenie repo\\Art-Gallery-MVC\\MVC.csproj",
+        "projectUniqueName": "/Users/mateuszsobczyk/Desktop/Art-Gallery-MVC/MVC.csproj",
         "projectName": "MVC",
-        "projectPath": "C:\\Users\\przem\\OneDrive\\Desktop\\MVC zaliczenie repo\\Art-Gallery-MVC\\MVC.csproj",
-        "packagesPath": "C:\\Users\\przem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\przem\\OneDrive\\Desktop\\MVC zaliczenie repo\\Art-Gallery-MVC\\obj\\",
+        "projectPath": "/Users/mateuszsobczyk/Desktop/Art-Gallery-MVC/MVC.csproj",
+        "packagesPath": "/Users/mateuszsobczyk/.nuget/packages/",
+        "outputPath": "/Users/mateuszsobczyk/Desktop/Art-Gallery-MVC/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\przem\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/mateuszsobczyk/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -47,6 +45,10 @@
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
               "version": "[3.1.10, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[3.1.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -85,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.101/RuntimeIdentifierGraph.json"
         }
       }
     }

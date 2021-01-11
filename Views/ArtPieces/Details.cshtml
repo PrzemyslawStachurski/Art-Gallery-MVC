@@ -1,73 +1,114 @@
-﻿@model MVC.Models.ArtPiece
-
-@{
+﻿@{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
 
-<div>
-    <h4>ArtPiece</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Author)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Info)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Info)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ModifiedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ModifiedDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AuthorsNote)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AuthorsNote)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TypeOfArt)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TypeOfArt)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Style)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Style)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Reserved)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Reserved)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PicUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PicUrl)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Horizontal)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Horizontal)
-        </dd>
-    </dl>
+<div class="container">
+    <div class="button-container">
+        <button class="btn btn-secondary" asp-action="Index">Back to List</button>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="~/StoredPictures/@(Model.PicUrl)" />
+        </div>
+        <div class="col-md-6 info">
+            <div class="card">
+                <div class="card-title">
+                    <h2>
+                        @(Model.Author)
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <p>@(Model.Info)</p>
+                        <p>@(Model.AuthorsNote)</p>
+                        <p>@(Model.TypeOfArt)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.ArtPieceId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+<style>
+    .info {
+        padding-top: 1em;
+    }
+    .button-container {
+        padding-bottom: 1em;
+        padding-left: 0px;
+        padding-right: 1em;
+        padding-bottom: 1em;
+    }
+    img{
+        width:99%;
+    }
+</style>
+<!--Section: Block Content-->
+@*<div>
+        <h4>ArtPiece</h4>
+        <hr />
+        <dl class="row">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Author)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Author)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Info)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Info)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.ModifiedDate)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.AuthorsNote)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.AuthorsNote)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.TypeOfArt)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.TypeOfArt)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Style)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Style)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Reserved)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Reserved)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.PicUrl)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.PicUrl)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Horizontal)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Horizontal)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.ArtPieceId">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+*@

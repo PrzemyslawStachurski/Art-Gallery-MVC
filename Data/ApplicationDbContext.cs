@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,5 +15,7 @@ namespace MVC.Data
         }
 
         public DbSet<MVC.Models.ArtPiece> ArtPiece { get; set; }
+        public DbSet<MVC.Models.News> News { get; set; }
     }
 }
+ 

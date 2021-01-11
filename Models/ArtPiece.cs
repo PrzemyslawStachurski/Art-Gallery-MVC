@@ -36,6 +36,7 @@ namespace MVC.Models
 
         [DisplayName("Is reserved")]
         public bool Reserved { get; set; }
+
         [DisplayName("Picture URL")]
         public string PicUrl { get; set; }
 
@@ -44,5 +45,8 @@ namespace MVC.Models
         [NotMapped]
         [DisplayName("Upload picture of your piece of art")]
         public IFormFile PictureFile { get; set; }
+
+        [DisplayName("Price")]
+        public decimal Price { get; set; }
     }
 }
