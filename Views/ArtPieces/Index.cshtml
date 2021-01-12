@@ -11,6 +11,48 @@
     <a asp-action="Create">Create New</a>
 </p>
 <div class="row justify-content-center">
+    <div id="filter-bar" class="row">
+        <div class="row filter-box">
+            <div class=" filter-box-name">Author</div>
+            <div class="filter-box-area">
+                <select name="author">
+                    <option value="">all</option>
+                    @foreach (var item in Model.Select(s => s.Author).Distinct().ToArray())
+                    {
+                        <option value="@(item)">@(item)</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="row filter-box">
+            <div class="filter-box-name">Type</div>
+            <div class="filter-box-area">
+                <select name="type">
+                    <option value="">all</option>
+                    @foreach (var item in Model.Select(s => s.TypeOfArt).Distinct().ToArray())
+                    {
+                        <option value="@(item)">@(item)</option>
+                    }
+                </select>
+
+            </div>
+        </div>
+        <div class="filter-box">
+            <div class="filter-box-name">Price</div>
+            <div class="filter-box-area">
+
+            </div>
+        </div>
+        <div class="filter-box">
+            <div class="filter-box-name">Search</div>
+            <div class="filter-box-area">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
     @foreach (var item in Model)
     {
     
@@ -32,6 +74,19 @@
 
 
 <style>
+    .filter-box-name {
+        margin: 2px;
+    }
+    .filter-box-area {
+        margin-left: 5px;
+        margin-right: 2px;
+    }
+    #filter-bar {
+        overflow:hidden;
+        justify-content: space-around;
+        width: 80%;
+        border: 1px solid black;
+    }
     .card-flyer {
         overflow: hidden;
     }

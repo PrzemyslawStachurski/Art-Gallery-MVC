@@ -9233,7 +9233,7 @@
       "outputPath": "/Users/mateuszsobczyk/Desktop/Art-Gallery-MVC/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/mateuszsobczyk/.nuget/NuGet/NuGet.Config"
+        "/Users/mateuszsobczyk/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
