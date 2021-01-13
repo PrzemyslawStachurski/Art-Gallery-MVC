@@ -10,11 +10,11 @@ namespace MVC.Models
     {
         public float Max { get; set; }
         public float Min { get; set; }
-        public int Last { get; set; }
+        public float Last { get; set; }
         public float Bid { get; set; }
-        public int Ask { get; set; }
-        public int Vwap { get; set; }
-        public int Average { get; set; }
+        public float Ask { get; set; }
+        public float Vwap { get; set; }
+        public float Average { get; set; }
         public float Volume { get; set; }
     }
 

@@ -21,6 +21,13 @@ using MVC;
 #nullable disable
 #nullable restore
 #line 2 "F:\Repozytorium\MVC\MVC\Views\_ViewImports.cshtml"
+using MVC.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "F:\Repozytorium\MVC\MVC\Views\_ViewImports.cshtml"
 using MVC.Models;
 
 #line default
@@ -28,7 +35,7 @@ using MVC.Models;
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorCompiledItemMetadataAttribute("RouteTemplate", "/bitcoin")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"de1b88de6a0f6ff95c11385030e939519fca9008", @"/Views/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7d7a8f56340c239c091cff637a00cc2fdf252300", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"85314baf2a9197d82ecb13d6cedf31c2bf999d23", @"/Views/_ViewImports.cshtml")]
     public class Views_Index : global::Microsoft.AspNetCore.Mvc.RazorPages.Page
     {
         #pragma warning disable 1998

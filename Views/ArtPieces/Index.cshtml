@@ -54,8 +54,7 @@
 
 <div class="row justify-content-center">
     @foreach (var item in Model)
-    {
-    
+    {   
         <div class="card card-flyer" style="width:15rem;margin:10px;">
             <a asp-action="Details" asp-route-id="@item.ArtPieceId">
                 <div class="image-box">
@@ -67,6 +66,7 @@
                 <p class="card-text ">@(item.Info)</p>
                 <p class="card-text ">@(item.AuthorsNote)</p>
                 <p class="card-text ">@(item.Price)</p>
+                <p class="card-text ">@(item.Price/(decimal)(ViewBag.BitcoinPrice))</p>                
             </div>
         </div>
     }

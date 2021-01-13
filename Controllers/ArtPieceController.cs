@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +12,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MVC.Data;
 using MVC.Models;
+using Newtonsoft.Json;
 
 namespace MVC.Controllers
 {
@@ -30,6 +33,19 @@ namespace MVC.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
+
+            BitcoinApi bitcoin;
+
+            using (var data = new WebClient())
+            {
+                string response = data.DownloadString("https://bitbay.net/API/Public/btc/ticker.json");
+                bitcoin = JsonConvert.DeserializeObject<BitcoinApi>(response);
+                var price = bitcoin.Average;
+                ViewBag.BitcoinPrice = price;
+            }
+
+            
+
             return View(await _context.ArtPiece.ToListAsync());
         }
 
@@ -93,6 +109,9 @@ namespace MVC.Controllers
             }
 
             var artPiece = await _context.ArtPiece.FindAsync(id);
+
+            
+
             if (artPiece == null)
             {
                 return NotFound();

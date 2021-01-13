@@ -32,7 +32,10 @@ namespace MVC
 
             services.AddHttpClient();
 
+            //services.AddDefaultIdentity<ApplicatioUser>().AddRoles<IdentityBuilder>.AddE
+
             services.AddControllersWithViews();
+            services.AddDefaultIdentity<User>().AddRoles<IdentityRole>().AddEntityFrameworkStores<MVCAuthDbContext>();
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddHttpClient();
 
@@ -75,8 +78,10 @@ namespace MVC
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapDefaultControllerRoute();
-                endpoints.MapBlazorHub();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
 
             app.UseStatusCodePages(async context =>

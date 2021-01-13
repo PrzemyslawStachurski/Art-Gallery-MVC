@@ -16,9 +16,12 @@ namespace MVC.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
+                
                 services.AddDbContext<MVCAuthDbContext>(options =>
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("MVCAuthDbContextConnection")));
+
+                //services.AddDefaultIdentity<User>().AddRoles<IdentityRole>().AddEntityFrameworkStores<MVCAuthDbContext>();
 
                 services.AddDefaultIdentity<User>(options => {
                     options.Password.RequireLowercase = false; //do zmiany
