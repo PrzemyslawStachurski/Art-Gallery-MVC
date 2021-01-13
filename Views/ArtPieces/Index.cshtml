@@ -1,0 +1,197 @@
+﻿@model IEnumerable<MVC.Models.ArtPiece>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="row justify-content-center">
+    <div id="filter-bar" class="row">
+        <div class="row filter-box">
+            <div class=" filter-box-name">Author</div>
+            <div class="filter-box-area">
+                <select name="author">
+                    <option value="">all</option>
+                    @foreach (var item in Model.Select(s => s.Author).Distinct().ToArray())
+                    {
+                        <option value="@(item)">@(item)</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="row filter-box">
+            <div class="filter-box-name">Type</div>
+            <div class="filter-box-area">
+                <select name="type">
+                    <option value="">all</option>
+                    @foreach (var item in Model.Select(s => s.TypeOfArt).Distinct().ToArray())
+                    {
+                        <option value="@(item)">@(item)</option>
+                    }
+                </select>
+
+            </div>
+        </div>
+        <div class="filter-box">
+            <div class="filter-box-name">Price</div>
+            <div class="filter-box-area">
+
+            </div>
+        </div>
+        <div class="filter-box">
+            <div class="filter-box-name">Search</div>
+            <div class="filter-box-area">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    @foreach (var item in Model)
+    {
+    
+        <div class="card card-flyer" style="width:15rem;margin:10px;">
+            <a asp-action="Details" asp-route-id="@item.ArtPieceId">
+                <div class="image-box">
+                    <img class="card-img-top" src="~/StoredPictures/@(item.PicUrl)" alt="Card Image" />
+                </div>
+            </a>
+            <div class="card-body text-center bg-light">
+                <h6 class="card-title">@(item.Author)</h6>
+                <p class="card-text ">@(item.Info)</p>
+                <p class="card-text ">@(item.AuthorsNote)</p>
+                <p class="card-text ">@(item.Price)</p>
+            </div>
+        </div>
+    }
+</div>
+
+
+<style>
+    .filter-box-name {
+        margin: 2px;
+    }
+    .filter-box-area {
+        margin-left: 5px;
+        margin-right: 2px;
+    }
+    #filter-bar {
+        overflow:hidden;
+        justify-content: space-around;
+        width: 80%;
+        border: 1px solid black;
+    }
+    .card-flyer {
+        overflow: hidden;
+    }
+    .card-img-top {
+        width: 100%;
+        height: 15em;
+        object-fit: cover;
+    }
+    .card-flyer:hover .image-box img {
+        opacity: 1;
+        -webkit-transform: scale(1.10);
+        -moz-transform: scale(1.10);
+        -ms-transform: scale(1.10);
+        -o-transform: scale(1.10);
+        transform: scale(1.10);
+        -webkit-transition: all 0.1s ease-in;
+        -moz-transition: all 0.1s ease-in;
+        -ms-transition: all 0.1s ease-in;
+        -o-transition: all 0.1s ease-in;
+        transition: all 0.1s ease-in;
+    }
+
+    .card-flyer:hover {
+        background: #fff;
+        box-shadow: 0px 7px 13px rgba(0, 0, 0, 0.50);
+        /*box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.50);*/
+        -webkit-transition: all 0.1s ease-in;
+        -moz-transition: all 0.1s ease-in;
+        -ms-transition: all 0.1s ease-in;
+        -o-transition: all 0.1s ease-in;
+        transition: all 0.1s ease-in;
+        margin-top: 50px;
+    }
+</style>
+@*<table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Author)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Info)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ModifiedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AuthorsNote)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TypeOfArt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Style)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reserved)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PicUrl)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Horizontal)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Info)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuthorsNote)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeOfArt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Style)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reserved)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PicUrl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Horizontal)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ArtPieceId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ArtPieceId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ArtPieceId">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@
+
+
