@@ -56,10 +56,15 @@ namespace MVC
 
             services.AddHttpClient();
 
-            //services.AddDefaultIdentity<ApplicatioUser>().AddRoles<IdentityBuilder>.AddE
 
             services.AddControllersWithViews();
-            //services.AddDefaultIdentity<User>().AddRoles<IdentityRole>().AddEntityFrameworkStores<MVCAuthDbContext>();
+            services.AddDefaultIdentity<User>(options => {
+                options.Password.RequireLowercase = false; //do zmiany
+                options.Password.RequireUppercase = false;
+                options.SignIn.RequireConfirmedAccount = false;
+                options.Password.RequireNonAlphanumeric = false;
+            }).AddRoles<IdentityRole>().AddEntityFrameworkStores<MVCAuthDbContext>();
+
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddHttpClient();
 

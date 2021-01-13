@@ -23,14 +23,7 @@ namespace MVC.Areas.Identity
 
                 //services.AddDefaultIdentity<User>().AddRoles<IdentityRole>().AddEntityFrameworkStores<MVCAuthDbContext>();
 
-                services.AddDefaultIdentity<User>(options => {
-                    options.Password.RequireLowercase = false; //do zmiany
-                    options.Password.RequireUppercase = false;
-                    options.SignIn.RequireConfirmedAccount = false;
-                    options.Password.RequireNonAlphanumeric = false;
-                })
-
-                     .AddEntityFrameworkStores<MVCAuthDbContext>();
+                
             });
         }
     }
