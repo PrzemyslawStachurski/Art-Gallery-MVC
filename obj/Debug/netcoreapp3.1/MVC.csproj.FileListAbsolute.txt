@@ -1849,3 +1849,5 @@ F:\Repozytorium\MVC\MVC\obj\Debug\netcoreapp3.1\MVC.pdb
 F:\Repozytorium\MVC\MVC\obj\Debug\netcoreapp3.1\MVC.genruntimeconfig.cache
 F:\Repozytorium\MVC\MVC\obj\Debug\netcoreapp3.1\MVC.csprojAssemblyReference.cache
 F:\Repozytorium\MVC\MVC\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Index.cshtml.g.cs
+F:\Repozytorium\MVC\MVC\obj\Debug\netcoreapp3.1\Razor\Views\Index.cshtml.g.cs
+F:\Repozytorium\MVC\MVC\bin\Debug\netcoreapp3.1\System.Net.Http.Json.dll

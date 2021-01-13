@@ -32,14 +32,9 @@ namespace MVC
 
             services.AddHttpClient();
 
-            /*services.AddDefaultIdentity<User>(options => {
-                options.Password.RequireLowercase = false; //do zmiany
-                options.Password.RequireUppercase = false;
-                options.SignIn.RequireConfirmedAccount = false;
-                options.Password.RequireNonAlphanumeric = false;
-            }).AddRoles<IdentityRole>().AddEntityFrameworkStores<MVCAuthDbContext>();*/
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddHttpClient();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("ApplicationDbContext")));
@@ -50,6 +45,8 @@ namespace MVC
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+
+            services.AddServerSideBlazor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -78,10 +75,8 @@ namespace MVC
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
+                endpoints.MapDefaultControllerRoute();
+                endpoints.MapBlazorHub();
             });
 
             app.UseStatusCodePages(async context =>
