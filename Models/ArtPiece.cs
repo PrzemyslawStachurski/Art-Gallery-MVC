@@ -40,6 +40,7 @@ namespace MVC.Models
         [DisplayName("Picture URL")]
         public string PicUrl { get; set; }
 
+        [DisplayName("Horizontal")]
         public bool Horizontal { get; set; }
 
         [NotMapped]

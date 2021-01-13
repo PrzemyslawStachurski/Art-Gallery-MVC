@@ -1,100 +1,190 @@
 ﻿@model IEnumerable<MVC.Models.ArtPiece>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "ArtPieces";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@*<div class="row justify-content-center">
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<div class="row justify-content-center">
-    <div id="filter-bar" class="row">
-        <div class="row filter-box">
-            <div class=" filter-box-name">Author</div>
-            <div class="filter-box-area">
-                <select name="author">
-                    <option value="">all</option>
-                    @foreach (var item in Model.Select(s => s.Author).Distinct().ToArray())
-                    {
-                        <option value="@(item)">@(item)</option>
-                    }
-                </select>
-            </div>
+        <div class="col-md-4">
         </div>
-        <div class="row filter-box">
-            <div class="filter-box-name">Type</div>
-            <div class="filter-box-area">
-                <select name="type">
-                    <option value="">all</option>
-                    @foreach (var item in Model.Select(s => s.TypeOfArt).Distinct().ToArray())
-                    {
-                        <option value="@(item)">@(item)</option>
-                    }
-                </select>
+        <div class="row col-md-8">
+            <div class="">
+
 
             </div>
-        </div>
-        <div class="filter-box">
-            <div class="filter-box-name">Price</div>
-            <div class="filter-box-area">
+            <div class="row filter-box">
+                <div class="filter-box-name"></div>
+                <div class="filter-box-area">
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["AuthorSortParm"]">@Html.DisplayNameFor(model => model.Author)</a>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]">@Html.DisplayNameFor(model => model.Price)</a>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParam"]">@Html.DisplayNameFor(model => model.ModifiedDate)</a>
 
-            </div>
-        </div>
-        <div class="filter-box">
-            <div class="filter-box-name">Search</div>
-            <div class="filter-box-area">
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row justify-content-center">
-    @foreach (var item in Model)
-    {   
-        <div class="card card-flyer" style="width:15rem;margin:10px;">
-            <a asp-action="Details" asp-route-id="@item.ArtPieceId">
-                <div class="image-box">
-                    <img class="card-img-top" src="~/StoredPictures/@(item.PicUrl)" alt="Card Image" />
                 </div>
-            </a>
-            <div class="card-body text-center bg-light">
-                <h6 class="card-title">@(item.Author)</h6>
-                <p class="card-text ">@(item.Info)</p>
-                <p class="card-text ">@(item.AuthorsNote)</p>
-                <p class="card-text ">@(item.Price)</p>
-                <p class="card-text ">@(item.Price/(decimal)(ViewBag.BitcoinPrice))</p>                
             </div>
         </div>
-    }
+
+
+    </div>*@
+
+<div class="column justify-content-center">
+
+
+    <div id="firstLine" class="row justify-content-center mx-auto">
+        @using (Html.BeginForm())
+        {
+            <p id="searchbox" class=" row justify-content-center mx-auto">
+                @Html.TextBox("SearchString", null, new { @placeholder = "Search by Author, title or type of art", @class = "customTextBox" })
+                <button style="margin-top:1em;" type="submit"><i class="fa fa-search"></i></button>
+            </p>
+        }
+
+        <button id="search-button" class="btn btn-info btn-xs" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Advanced options
+        </button>
+    </div>
+
+
+    <div id="collapseExample" class="collapse row justify-content-center">
+        <form id="filtering">
+            <div id="filter-bar" class="row">
+
+                <div class="row filter-box">
+                    <div class=" filter-box-name">Author</div>
+                    <div class="filter-box-area">
+                        <select name="author">
+                            <option value="">all</option>
+                            @foreach (var item in Model.Select(s => s.Author).Distinct().ToArray())
+                            {
+                                <option value="@(item)">@(item)</option>
+}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row filter-box">
+                    <div class="filter-box-name">Type</div>
+                    <div class="filter-box-area">
+                        <select name="type">
+                            <option value="">all</option>
+                            @foreach (var item in Model.Select(s => s.TypeOfArt).Distinct().ToArray())
+                            {
+                                <option value="@(item)">@(item)</option>
+}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row filter-box">
+                    <div class="filter-box-name">Price</div>
+                    <div class="filter-box-area">
+                        <input class="price-input" min="0" name="price_min" value="" placeholder="Od">
+                        <input class="price-input" min="0" name="price_max" value="" placeholder="Do">
+                    </div>
+                </div>
+
+                <div class="row filter-box">
+                    <div class="filter-box-name"></div>
+                    <div class="filter-box-area">
+                        <button class="btn btn-info" type="submit" value="Submit" form="filtering"><i class="fa fa-search"></i></button>
+
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <div class="row justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="card card-flyer" style="width:15rem;margin:10px;">
+                <a asp-action="Details" asp-route-id="@item.ArtPieceId">
+                    <div class="image-box">
+                        <img class="card-img-top" src="~/StoredPictures/@(item.PicUrl)" alt="Card Image" />
+                    </div>
+                </a>
+                <div class="card-body text-center bg-light">
+                    <h6 class="card-title">@(item.Author)</h6>
+                    <p class="card-text ">@(item.Info)</p>
+                    <p class="card-text ">@(item.AuthorsNote)</p>
+                    <p class="card-text ">@(item.Price)</p>
+                    <p class="card-text ">@(item.ModifiedDate)</p>
+                    <p class="card-text ">@(item.TypeOfArt)</p>
+                    <p class="card-text ">@(item.Price/(decimal)(ViewBag.BitcoinPrice))</p>
+                </div>
+            </div>}
+    </div>
+
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <style>
+    #firstLine {
+        overflow: hidden height:3em;
+    }
+
+    #search-button {
+        height: 3em;
+        margin: 1em;
+    }
+
+    .customTextBox {
+        margin-top: 1em;
+        width: 30em;
+    }
+
+    #searchbox input[type=text] {
+        padding: 10px;
+        font-size: 17px;
+        border: 1px solid grey;
+        float: left;
+        width: 40vh;
+        background: #f1f1f1;
+    }
+
+    .price-input {
+        width: 3em;
+    }
+
+    .filter-box {
+        margin: 1em;
+        justify-content: center;
+    }
+
     .filter-box-name {
-        margin: 2px;
+        margin: auto;
+        margin-left: 1px;
+        margin-right: 1px;
     }
+
     .filter-box-area {
-        margin-left: 5px;
-        margin-right: 2px;
+        margin: auto;
     }
-    #filter-bar {
-        overflow:hidden;
-        justify-content: space-around;
-        width: 80%;
-        border: 1px solid black;
-    }
+
     .card-flyer {
         overflow: hidden;
     }
+
     .card-img-top {
         width: 100%;
         height: 15em;
         object-fit: cover;
     }
+
     .card-flyer:hover .image-box img {
         opacity: 1;
         -webkit-transform: scale(1.10);
@@ -121,77 +211,3 @@
         margin-top: 50px;
     }
 </style>
-@*<table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Author)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Info)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ModifiedDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AuthorsNote)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TypeOfArt)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Style)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Reserved)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PicUrl)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Horizontal)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-    @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Author)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Info)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ModifiedDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AuthorsNote)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TypeOfArt)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Style)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Reserved)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PicUrl)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Horizontal)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ArtPieceId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ArtPieceId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ArtPieceId">Delete</a>
-                </td>
-            </tr>
-    }
-        </tbody>
-    </table>*@
-
-

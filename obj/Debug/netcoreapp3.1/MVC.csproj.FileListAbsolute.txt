@@ -1861,3 +1861,10 @@ F:\Repozytorium\MVC\MVC\obj\Debug\netcoreapp3.1\Razor\Components\Counter.razor.g
 F:\Repozytorium\MVC\MVC\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
 F:\Repozytorium\MVC\MVC\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 F:\Repozytorium\MVC\MVC\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.MicrosoftAccount.dll
+F:\Repozytorium\MVC\MVC\bin\Debug\netcoreapp3.1\pl\MVC.resources.dll
+F:\Repozytorium\MVC\MVC\obj\Debug\netcoreapp3.1\MVC.Resources.Controllers.ArtPieceController.pl.resources
+F:\Repozytorium\MVC\MVC\obj\Debug\netcoreapp3.1\MVC.Resources.Models.ArtPiece.pl.resources
+F:\Repozytorium\MVC\MVC\obj\Debug\netcoreapp3.1\MVC.Resources.Views.ArtPieces.Create.pl.resources
+F:\Repozytorium\MVC\MVC\obj\Debug\netcoreapp3.1\MVC.Resources.Views.ArtPieces.Index.pl.resources
+F:\Repozytorium\MVC\MVC\obj\Debug\netcoreapp3.1\MVC.csproj.GenerateResource.cache
+F:\Repozytorium\MVC\MVC\obj\Debug\netcoreapp3.1\pl\MVC.resources.dll

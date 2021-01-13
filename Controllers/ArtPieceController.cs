@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using MVC.Data;
 using MVC.Models;
 using Newtonsoft.Json;
@@ -21,16 +22,20 @@ namespace MVC.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _hostEnvironment;
+        private readonly IStringLocalizer<ArtPiecesController> _localizer;
 
 
-        public ArtPiecesController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
+        public ArtPiecesController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment, IStringLocalizer<ArtPiecesController> localizer)
         {
             _context = context;
             this._hostEnvironment = hostEnvironment;
+            this._localizer = localizer;
         }
 
+
+
         // GET: ArtPieces
-        [AllowAnonymous]
+        /*[AllowAnonymous]
         public async Task<IActionResult> Index()
         {
 
@@ -47,6 +52,65 @@ namespace MVC.Controllers
             
 
             return View(await _context.ArtPiece.ToListAsync());
+        }*/
+        // GET: ArtPieces
+        [AllowAnonymous]
+        public async Task<IActionResult> Index(string sortOrder, string searchString, string author, string type, string price_min, string price_max)
+        {
+            ViewData["AuthorSortParm"] = String.IsNullOrEmpty(sortOrder) ? "author" : "";
+            ViewData["PriceSortParm"] = String.IsNullOrEmpty(sortOrder) ? "price" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date" : "Date";
+
+            var artPieces = from s in _context.ArtPiece select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                artPieces = artPieces.Where(s => s.Author.Contains(searchString) ||
+                                        s.Info.Contains(searchString) || s.TypeOfArt.Contains(searchString));
+            }
+
+            if (!String.IsNullOrEmpty(author))
+            {
+                artPieces = artPieces.Where(s => s.Author.Contains(author));
+
+            }
+            if (!String.IsNullOrEmpty(type))
+            {
+                artPieces = artPieces.Where(s => s.TypeOfArt.Contains(type));
+
+            }
+
+            BitcoinApi bitcoin;
+
+            using (var data = new WebClient())
+            {
+                string response = data.DownloadString("https://bitbay.net/API/Public/btc/ticker.json");
+                bitcoin = JsonConvert.DeserializeObject<BitcoinApi>(response);
+                var price = bitcoin.Average;
+                ViewBag.BitcoinPrice = price;
+            }
+
+
+            switch (sortOrder)
+            {
+                case "author":
+                    artPieces = artPieces.OrderBy(s => s.Author);
+                    break;
+                case "price":
+                    artPieces = artPieces.OrderByDescending(s => s.Price);
+                    break;
+                case "Date":
+                    artPieces = artPieces.OrderBy(s => s.ModifiedDate);
+                    break;
+                default:
+                    artPieces = artPieces.OrderByDescending(s => s.ModifiedDate);
+                    break;
+            }
+
+
+
+            return View(await artPieces.AsNoTracking().ToListAsync());
+
         }
 
         // GET: ArtPieces/Details/5

@@ -14,6 +14,9 @@ using MVC.Models;
 using MVC.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Options;
 
 namespace MVC
 {
@@ -29,6 +32,27 @@ namespace MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalization(OptionsServiceCollectionExtensions =>
+            {
+                OptionsServiceCollectionExtensions.ResourcesPath = "Resources";
+            });
+
+            services.AddMvc()
+                .AddViewLocalization(
+                OptionsServiceCollectionExtensions =>
+                { OptionsServiceCollectionExtensions.ResourcesPath = "Resources"; })
+                .AddDataAnnotationsLocalization()
+                .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
+
+            services.Configure<RequestLocalizationOptions>(OptionsServiceCollectionExtensions =>
+            {
+                var supportedCultures = new List<CultureInfo> {
+                    new CultureInfo("en"),
+                    new CultureInfo("pl")};
+                OptionsServiceCollectionExtensions.DefaultRequestCulture = new RequestCulture("en");
+                OptionsServiceCollectionExtensions.SupportedCultures = supportedCultures;
+                OptionsServiceCollectionExtensions.SupportedUICultures = supportedCultures;
+            });
 
             services.AddHttpClient();
 
@@ -91,6 +115,9 @@ namespace MVC
                     "Error, status code: " +
                     context.HttpContext.Response.StatusCode);
             });
+            var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+
+            app.UseRequestLocalization(options.Value);
 
             app.UseSession();
         }
