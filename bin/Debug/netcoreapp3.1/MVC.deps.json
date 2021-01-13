@@ -25,6 +25,7 @@
       "MVC/1.0.0": {
         "dependencies": {
           "Microsoft.AspNet.WebApi.Client": "5.2.7",
+          "Microsoft.AspNetCore.Authentication.MicrosoftAccount": "3.1.11",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.10",
           "Microsoft.AspNetCore.Identity.UI": "3.1.10",
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "3.1.0",
@@ -316,6 +317,17 @@
         },
         "compile": {
           "lib/netstandard2.0/System.Net.Http.Formatting.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.MicrosoftAccount/3.1.11": {
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.MicrosoftAccount.dll": {
+            "assemblyVersion": "3.1.11.0",
+            "fileVersion": "3.100.1120.56915"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.MicrosoftAccount.dll": {}
         }
       },
       "Microsoft.AspNetCore.Cryptography.Internal/3.1.10": {
@@ -4170,6 +4182,13 @@
       "sha512": "sha512-/76fAHknzvFqbznS6Uj2sOyE9rJB3PltY+f53TH8dX9RiGhk02EhuFCWljSj5nnqKaTsmma8DFR50OGyQ4yJ1g==",
       "path": "microsoft.aspnet.webapi.client/5.2.7",
       "hashPath": "microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.MicrosoftAccount/3.1.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vLJTjFxb0gM3SWZ12ldYsrYxI6hM+iPQgK8qHB8cELlqGzd6B4UfWqVbHwZlRVGOiM2LRtdBsWyE2xpmID2j9A==",
+      "path": "microsoft.aspnetcore.authentication.microsoftaccount/3.1.11",
+      "hashPath": "microsoft.aspnetcore.authentication.microsoftaccount.3.1.11.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/3.1.10": {
       "type": "package",

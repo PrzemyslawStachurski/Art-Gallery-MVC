@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "rrsS6HsESF8rjanVGKzr1cu3aoWqtxgR0Md0CwrTc3erlq3IoaUncgpHgKKc4QY1Z7hUtOZJL+RQU1Ecvy+/GQ==",
+  "dgSpecHash": "WuACLWyMhsVX6GjZrZRs3CeGMcAVtpfi5aCkSmm/lU/3bufcBVOBIo/zEbuFQGGrluvtN2YERBsPZPBWJP9RWg==",
   "success": true,
   "projectFilePath": "F:\\Repozytorium\\MVC\\MVC\\MVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Maciek\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
+    "C:\\Users\\Maciek\\.nuget\\packages\\microsoft.aspnetcore.authentication.microsoftaccount\\3.1.11\\microsoft.aspnetcore.authentication.microsoftaccount.3.1.11.nupkg.sha512",
     "C:\\Users\\Maciek\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.10\\microsoft.aspnetcore.cryptography.internal.3.1.10.nupkg.sha512",
     "C:\\Users\\Maciek\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.10\\microsoft.aspnetcore.cryptography.keyderivation.3.1.10.nupkg.sha512",
     "C:\\Users\\Maciek\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

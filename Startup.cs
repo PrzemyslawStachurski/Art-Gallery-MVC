@@ -35,7 +35,7 @@ namespace MVC
             //services.AddDefaultIdentity<ApplicatioUser>().AddRoles<IdentityBuilder>.AddE
 
             services.AddControllersWithViews();
-            services.AddDefaultIdentity<User>().AddRoles<IdentityRole>().AddEntityFrameworkStores<MVCAuthDbContext>();
+            //services.AddDefaultIdentity<User>().AddRoles<IdentityRole>().AddEntityFrameworkStores<MVCAuthDbContext>();
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddHttpClient();
 

@@ -1860,3 +1860,4 @@ F:\Repozytorium\MVC\MVC\obj\Debug\netcoreapp3.1\RazorDeclaration\Components\Coun
 F:\Repozytorium\MVC\MVC\obj\Debug\netcoreapp3.1\Razor\Components\Counter.razor.g.cs
 F:\Repozytorium\MVC\MVC\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
 F:\Repozytorium\MVC\MVC\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+F:\Repozytorium\MVC\MVC\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.MicrosoftAccount.dll
