@@ -16,9 +16,14 @@ namespace MVC.Models
         public int NewsId { get; set; }
 
         [DisplayName("Author")]
+        [StringLength(70, ErrorMessage = "Author`s name cannot exceed 70 characters.")]
+        [RegularExpression(@"^([a - zA - Z])\s + ([a - zA - Z])$",//regex for names 
+            ErrorMessage = "Authors name cannot include any numbers and special characters and must begin with capital letters")]
+
         public string NewsAuthor { get; set; }
 
         [DisplayName("Content")]
+        [StringLength(1200, ErrorMessage = "Content cannot exceed 1200 characters.")]
         public string Content { get; set; }
 
         [DataType(DataType.DateTime)]
@@ -30,7 +35,7 @@ namespace MVC.Models
         public string PicUrl { get; set; }
 
         [NotMapped]
-        [DisplayName("Picture")]
+        [DisplayName("Upload your picture")]
         public IFormFile PictureFile { get; set; }
 
     }

@@ -124,36 +124,15 @@
     <value>Imię i nazwisko autora nie mogą zawierać numerów i znaków specjalnych oraz musi rozpoczynać się wielką literą.</value>
   </data>
   <data name="Author`s name cannot exceed 70 characters." xml:space="preserve">
-    <value>Imię i nazwisko autora nie mogą przekraczać 70 znaków.</value>
+    <value>Imię i  nazwisko autora nie mogą przekraczać 70 znaków.</value>
   </data>
-  <data name="Horizontal" xml:space="preserve">
-    <value>Orientacja pozioma</value>
+  <data name="Content" xml:space="preserve">
+    <value>Treść</value>
   </data>
-  <data name="Note" xml:space="preserve">
-    <value>Komentarz</value>
+  <data name="Content cannot exceed 1200 characters." xml:space="preserve">
+    <value>Treść nie może przekraczać 1200 znaków.</value>
   </data>
-  <data name="Note cannot exceed 250 characters." xml:space="preserve">
-    <value>Komentarz nie może przekroczyć 250 znaków</value>
-  </data>
-  <data name="Style" xml:space="preserve">
-    <value>Styl</value>
-  </data>
-  <data name="Style cannot contain numbers" xml:space="preserve">
-    <value>Styl nie może zawierać numerów</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Tytuł</value>
-  </data>
-  <data name="Title cannot exceed 70 characters." xml:space="preserve">
-    <value>Tytuł nie może przekraczać 70 znaków.</value>
-  </data>
-  <data name="Type of Art" xml:space="preserve">
-    <value>Rodzaj dzieła</value>
-  </data>
-  <data name="Type of art must be between 3 and 30 characters" xml:space="preserve">
-    <value>Rodzaj dzieła musi mieć od 3 do 30 znaków</value>
-  </data>
-  <data name="Upload picture of your piece of art" xml:space="preserve">
-    <value>Prześlij zdjęcie swojego dzieła</value>
+  <data name="Upload your picture" xml:space="preserve">
+    <value>Prześlij zdjęcie.</value>
   </data>
 </root>

@@ -125,6 +125,7 @@ namespace MVC
             app.UseRequestLocalization(options.Value);
 
             app.UseSession();
+
         }
     }
 }

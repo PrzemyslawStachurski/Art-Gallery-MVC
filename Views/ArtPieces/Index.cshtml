@@ -5,6 +5,30 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="containe text-center">
+    @if (ViewContext.HttpContext.User.IsInRole("Administrator"))
+    {<a class="btn btn-primary" asp-action="Create" asp-route-id="@Model">Create new</a>}
+</div>
+@{
+    if (TempData.Peek("Message") != null && (TempData.Peek("ArtAction").ToString() == "Create"))
+    {
+        <div class="text-center text-success">
+            <h3 id="message">@TempData.Peek("Message")</h3>
+        </div>
+    }
+    else if (TempData.Peek("Message") != null && (TempData.Peek("ArtAction").ToString() == "Edit"))
+    {
+        <div class="text-center text-warning">
+            <h3 id="message">@TempData.Peek("Message")</h3>
+        </div>
+    }
+    else if (TempData.Peek("Message") != null && (TempData.Peek("ArtAction").ToString() == "Delete"))
+    {
+        <div class="text-center text-danger">
+            <h3 id="message">@TempData.Peek("Message")</h3>
+        </div>
+    }
+}
 
 <div class="column justify-content-center">
 
@@ -36,7 +60,7 @@
                             @foreach (var item in Model.Select(s => s.Author).Distinct().ToArray())
                             {
                                 <option value="@(item)">@(item)</option>
-}
+                            }
                         </select>
                     </div>
                 </div>
@@ -49,7 +73,7 @@
                             @foreach (var item in Model.Select(s => s.TypeOfArt).Distinct().ToArray())
                             {
                                 <option value="@(item)">@(item)</option>
-}
+                            }
                         </select>
                     </div>
                 </div>
@@ -92,7 +116,13 @@
                     <p class="card-text ">@(item.TypeOfArt)</p>
                     <p class="card-text ">@(item.Price/(decimal)(ViewBag.BitcoinPrice))</p>
                 </div>
-            </div>}
+                @if (ViewContext.HttpContext.User.IsInRole("Administrator"))
+                {
+
+                }
+            </div>
+        }
+
     </div>
 
 </div>
@@ -100,17 +130,8 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 <style>
+
     #firstLine {
         overflow: hidden height:3em;
     }

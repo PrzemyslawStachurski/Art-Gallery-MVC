@@ -24,6 +24,12 @@ namespace MVC.Controllers
         private readonly IWebHostEnvironment _hostEnvironment;
         private readonly IStringLocalizer<ArtPiecesController> _localizer;
 
+        [TempData]
+        public string Message { get; set; }
+        [TempData]
+        public string ArtAction { get; set; }
+
+
 
         public ArtPiecesController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment, IStringLocalizer<ArtPiecesController> localizer)
         {
@@ -32,28 +38,6 @@ namespace MVC.Controllers
             this._localizer = localizer;
         }
 
-
-
-        // GET: ArtPieces
-        /*[AllowAnonymous]
-        public async Task<IActionResult> Index()
-        {
-
-            BitcoinApi bitcoin;
-
-            using (var data = new WebClient())
-            {
-                string response = data.DownloadString("https://bitbay.net/API/Public/btc/ticker.json");
-                bitcoin = JsonConvert.DeserializeObject<BitcoinApi>(response);
-                var price = bitcoin.Average;
-                ViewBag.BitcoinPrice = price;
-            }
-
-            
-
-            return View(await _context.ArtPiece.ToListAsync());
-        }*/
-        // GET: ArtPieces
         [AllowAnonymous]
         public async Task<IActionResult> Index(string sortOrder, string searchString, string author, string type, string price_min, string price_max)
         {
@@ -79,6 +63,7 @@ namespace MVC.Controllers
                 artPieces = artPieces.Where(s => s.TypeOfArt.Contains(type));
 
             }
+
 
             BitcoinApi bitcoin;
 
@@ -159,6 +144,8 @@ namespace MVC.Controllers
                 }
                 _context.Add(artPiece);
                 await _context.SaveChangesAsync();
+                Message = $"Art {artPiece.Info} added";
+                ArtAction = "Create";
                 return RedirectToAction(nameof(Index));
             }
             return View(artPiece);
@@ -201,18 +188,14 @@ namespace MVC.Controllers
                 {
                     _context.Update(artPiece);
                     await _context.SaveChangesAsync();
+                    Message = $"Art {artPiece.Info} edited";
+                    ArtAction = "Edit";
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (Exception ex)
                 {
-                    if (!ArtPieceExists(artPiece.ArtPieceId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                    ViewBag.ErrorTitle = $"There was an errow editing {artPiece.ArtPieceId}";
+                    return View("Error");
+;               }
                 return RedirectToAction(nameof(Index));
             }
             return View(artPiece);
@@ -244,6 +227,8 @@ namespace MVC.Controllers
             var artPiece = await _context.ArtPiece.FindAsync(id);
             _context.ArtPiece.Remove(artPiece);
             await _context.SaveChangesAsync();
+            Message = $"Art {artPiece.Info} deleted";
+            ArtAction = "Delete";
             return RedirectToAction(nameof(Index));
         }
 
