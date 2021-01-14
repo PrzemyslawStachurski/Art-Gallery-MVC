@@ -30,6 +30,7 @@
     }
 }
 
+
 <div class="column justify-content-center">
 
 
@@ -39,63 +40,75 @@
             <p id="searchbox" class=" row justify-content-center mx-auto">
                 @Html.TextBox("SearchString", null, new { @placeholder = "Search by Author, title or type of art", @class = "customTextBox" })
                 <button style="margin-top:1em;" type="submit"><i class="fa fa-search"></i></button>
-            </p>
-        }
+            </p>}
 
-        <button id="search-button" class="btn btn-info btn-xs" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <button id="search-button" class="btn btn-info btn-xs" type="button" data-toggle="collapse" data-target="#advanced" aria-expanded="false" aria-controls="collapseExample">
             Advanced options
         </button>
     </div>
 
 
-    <div id="collapseExample" class="collapse row justify-content-center">
-        <form id="filtering">
-            <div id="filter-bar" class="row">
-
-                <div class="row filter-box">
-                    <div class=" filter-box-name">Author</div>
-                    <div class="filter-box-area">
-                        <select name="author">
-                            <option value="">all</option>
-                            @foreach (var item in Model.Select(s => s.Author).Distinct().ToArray())
-                            {
-                                <option value="@(item)">@(item)</option>
-                            }
-                        </select>
+    <div id="advanced" class="collapse column">
+        <div class="row justify-content-center">
+            <form id="filtering">
+                <div id="filter-bar" class="row">
+                    <div class="row filter-box">
+                        <div class=" filter-box-name">Author</div>
+                        <div class="filter-box-area">
+                            <select name="author">
+                                <option value="">all</option>
+                                @foreach (var item in Model.Select(s => s.Author).Distinct().ToArray())
+                                {
+                                    <option value="@(item)">@(item)</option>
+                                }
+                            </select>
+                        </div>
                     </div>
-                </div>
 
-                <div class="row filter-box">
-                    <div class="filter-box-name">Type</div>
-                    <div class="filter-box-area">
-                        <select name="type">
-                            <option value="">all</option>
-                            @foreach (var item in Model.Select(s => s.TypeOfArt).Distinct().ToArray())
-                            {
-                                <option value="@(item)">@(item)</option>
-                            }
-                        </select>
+                    <div class="row filter-box">
+                        <div class="filter-box-name">Type</div>
+                        <div class="filter-box-area">
+                            <select name="type">
+                                <option value="">all</option>
+                                @foreach (var item in Model.Select(s => s.TypeOfArt).Distinct().ToArray())
+                                {
+                                    <option value="@(item)">@(item)</option>
+                                }
+                            </select>
+                        </div>
                     </div>
-                </div>
 
-                <div class="row filter-box">
-                    <div class="filter-box-name">Price</div>
-                    <div class="filter-box-area">
-                        <input class="price-input" min="0" name="price_min" value="" placeholder="Od">
-                        <input class="price-input" min="0" name="price_max" value="" placeholder="Do">
+                    <div class="row filter-box">
+                        <div class="filter-box-name"></div>
+                        <div class="filter-box-area">
+                            <button class="btn btn-info" type="submit" value="Submit" form="filtering"><i class="fa fa-search"></i></button>
+                        </div>
                     </div>
-                </div>
 
-                <div class="row filter-box">
-                    <div class="filter-box-name"></div>
-                    <div class="filter-box-area">
-                        <button class="btn btn-info" type="submit" value="Submit" form="filtering"><i class="fa fa-search"></i></button>
 
+                    <div class="row filter-box">
+                        <div class="filter-box-name"></div>
+                        <div class="filter-box-area">
+                            <button class="btn btn-secondary" type="submit" value="Submit" form="filtering">Clear</button>
+                        </div>
                     </div>
+
                 </div>
+            </form>
+        </div>
+
+
+        <div class="row filter-box">
+            <div class="filter-box-name"></div>
+            <div class="filter-box-area">
+                <a class="btn btn-light" asp-action="Index" asp-route-sortOrder="@ViewData["AuthorSortParm"]">@Html.DisplayNameFor(model => model.Author)</a>
+                <a class="btn btn-light" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]">@Html.DisplayNameFor(model => model.Price)</a>
+                <a class="btn btn-light" asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParam"]">@Html.DisplayNameFor(model => model.ModifiedDate)</a>
 
             </div>
-        </form>
+        </div>
+
+
     </div>
 
     <div class="row justify-content-center">
@@ -116,13 +129,7 @@
                     <p class="card-text ">@(item.TypeOfArt)</p>
                     <p class="card-text ">@(item.Price/(decimal)(ViewBag.BitcoinPrice))</p>
                 </div>
-                @if (ViewContext.HttpContext.User.IsInRole("Administrator"))
-                {
-
-                }
-            </div>
-        }
-
+            </div>}
     </div>
 
 </div>
@@ -130,8 +137,17 @@
 
 
 
-<style>
 
+
+
+
+
+
+
+
+
+
+<style>
     #firstLine {
         overflow: hidden height:3em;
     }

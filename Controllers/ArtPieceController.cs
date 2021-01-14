@@ -191,11 +191,17 @@ namespace MVC.Controllers
                     Message = $"Art {artPiece.Info} edited";
                     ArtAction = "Edit";
                 }
-                catch (Exception ex)
+                catch (DbUpdateConcurrencyException)
                 {
-                    ViewBag.ErrorTitle = $"There was an errow editing {artPiece.ArtPieceId}";
-                    return View("Error");
-;               }
+                    if (!ArtPieceExists(artPiece.ArtPieceId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
                 return RedirectToAction(nameof(Index));
             }
             return View(artPiece);

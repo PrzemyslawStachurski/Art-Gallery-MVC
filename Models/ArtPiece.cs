@@ -60,7 +60,7 @@ namespace MVC.Models
 
         [NotMapped]
         [DisplayName("Upload picture of your piece of art")]
-        [Required]
+        //[Required]
         public IFormFile PictureFile { get; set; }
 
         [Required]
