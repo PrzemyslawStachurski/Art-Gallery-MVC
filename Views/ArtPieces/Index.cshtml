@@ -5,10 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div class="containe text-center">
-    @if (ViewContext.HttpContext.User.IsInRole("Administrator"))
-    {<a class="btn btn-primary" asp-action="Create" asp-route-id="@Model">Create new</a>}
-</div>
+
 @{
     if (TempData.Peek("Message") != null && (TempData.Peek("ArtAction").ToString() == "Create"))
     {
@@ -35,6 +32,10 @@
 
 
     <div id="firstLine" class="row justify-content-center mx-auto">
+        <div class="text-center">
+            @if (ViewContext.HttpContext.User.IsInRole("Administrator"))
+            {<a class="btn btn-primary search-button" asp-action="Create" asp-route-id="@Model">Create new</a>}
+        </div>
         @using (Html.BeginForm())
         {
             <p id="searchbox" class=" row justify-content-center mx-auto">
@@ -42,7 +43,7 @@
                 <button style="margin-top:1em;" type="submit"><i class="fa fa-search"></i></button>
             </p>}
 
-        <button id="search-button" class="btn btn-info btn-xs" type="button" data-toggle="collapse" data-target="#advanced" aria-expanded="false" aria-controls="collapseExample">
+        <button class="btn btn-info btn-xs search-button" type="button" data-toggle="collapse" data-target="#advanced" aria-expanded="false" aria-controls="collapseExample">
             Advanced options
         </button>
     </div>
@@ -124,10 +125,10 @@
                     <h6 class="card-title">@(item.Author)</h6>
                     <p class="card-text ">@(item.Info)</p>
                     <p class="card-text ">@(item.AuthorsNote)</p>
-                    <p class="card-text ">@(item.Price)</p>
-                    <p class="card-text ">@(item.ModifiedDate)</p>
+                    <p class="card-text ">USD: @(item.Price)</p>
+                    <p class="card-text ">@(item.Style)</p>
                     <p class="card-text ">@(item.TypeOfArt)</p>
-                    <p class="card-text ">@(item.Price/(decimal)(ViewBag.BitcoinPrice))</p>
+                    <p class="card-text ">BTC: @(item.Price/(decimal)(ViewBag.BitcoinPrice))</p>
                 </div>
             </div>}
     </div>
@@ -149,10 +150,10 @@
 
 <style>
     #firstLine {
-        overflow: hidden height:3em;
+        overflow: hidden;
     }
 
-    #search-button {
+    .search-button {
         height: 3em;
         margin: 1em;
     }

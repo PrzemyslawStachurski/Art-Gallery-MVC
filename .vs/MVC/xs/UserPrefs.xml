@@ -1,25 +1,11 @@
 ﻿<Properties StartupConfiguration="{6D392BB8-9567-49E7-95AF-323BE1DCCBBF}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Data/ApplicationDbContext.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Areas/Identity/Pages/Account/Login.cshtml">
     <Files>
-      <File FileName="Models/ArtPiece.cs" Line="11" Column="2" />
-      <File FileName="Views/ArtPieces/Index.cshtml" Line="27" Column="51" />
-      <File FileName="Views/ArtPieces/Create.cshtml" Line="40" Column="19" />
-      <File FileName="Program.cs" Line="16" Column="1" />
-      <File FileName="Views/ArtPieces/Details.cshtml" Line="26" Column="26" />
-      <File FileName="Views/ArtPieces/Edit.cshtml" Line="47" Column="37" />
-      <File FileName="Controllers/ArtPieceController.cs" Line="1" Column="1" />
-      <File FileName="Models/News.cs" Line="12" Column="13" />
-      <File FileName="Controllers/HomeController.cs" Line="1" Column="1" />
-      <File FileName="Models/ProjectRole.cs" Line="13" Column="2" />
-      <File FileName="Controllers/AdminController.cs" Line="12" Column="41" />
-      <File FileName="Views/Admin/Create.cshtml" Line="40" Column="1" />
-      <File FileName="Startup.cs" Line="41" Column="66" />
-      <File FileName="Areas/Identity/IdentityHostingStartup.cs" Line="35" Column="1" />
-      <File FileName="Areas/Identity/Pages/Account/Register.cshtml.cs" Line="91" Column="1" />
-      <File FileName="Areas/Identity/Pages/Account/Register.cshtml" Line="1" Column="1" />
-      <File FileName="appsettings.json" Line="1" Column="1" />
-      <File FileName="Controllers/NewsController.cs" Line="25" Column="43" />
-      <File FileName="Data/ApplicationDbContext.cs" Line="18" Column="28" />
+      <File FileName="Controllers/NewsController.cs" />
+      <File FileName="Data/ApplicationDbContext.cs" />
+      <File FileName="appsettings.json" />
+      <File FileName="Areas/Identity/Pages/Account/Login.cshtml" Line="82" Column="30" />
+      <File FileName="Views/Shared/_Layout.cshtml" Line="27" Column="26" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -30,18 +16,18 @@
                 <Node name="Identity" expanded="True">
                   <Node name="Pages" expanded="True">
                     <Node name="Account" expanded="True">
+                      <Node name="Login.cshtml" selected="True" />
                       <Node name="Register.cshtml" expanded="True" />
                     </Node>
                   </Node>
                 </Node>
               </Node>
               <Node name="Controllers" expanded="True" />
-              <Node name="Data" expanded="True">
-                <Node name="ApplicationDbContext.cs" selected="True" />
-              </Node>
+              <Node name="Data" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Admin" expanded="True" />
+                <Node name="ArtPieces" expanded="True" />
+                <Node name="Shared" expanded="True" />
               </Node>
             </Node>
           </Node>

@@ -16,14 +16,14 @@
     </div>
 
 
-    <div class="row justify-content-between">
-        <div class="card col-6" style="width: 2em;">
+    <div class="row">
+        <div class="card col-xl-6" style="width: 30em;">
             <img class="card-img-top" src="~/StoredPictures/@(Model.PicUrl)" alt="Card image cap">
         </div>
 
 
 
-        <div class="col-6">
+        <div class="col-xl-6 mt-2">
             <div class="">
                 <header class="text-center pb-5">
                     <h1 class="h2">@Model.Info</h1>
@@ -43,10 +43,10 @@
                     <div class="pt-4 m-4 border-top text-right">
                         @if (Model.Reserved == true)
                         {
-                            <p class="text-secondary">Zarezerwowany</p> }
+                            <p class="text-secondary">Reserved</p> }
                         else
                         {
-                            <p class="text-secondary">Dostępny</p>}
+                            <p class="text-secondary">Available</p>}
                     </div>
                 </div>
 
