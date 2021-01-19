@@ -17,7 +17,7 @@ using Newtonsoft.Json;
 
 namespace MVC.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles ="Administrator")]
     public class ArtPiecesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -45,6 +45,7 @@ namespace MVC.Controllers
             ViewData["PriceSortParm"] = String.IsNullOrEmpty(sortOrder) ? "price" : "";
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date" : "Date";
 
+
             var artPieces = from s in _context.ArtPiece select s;
 
             if (!String.IsNullOrEmpty(searchString))
@@ -64,15 +65,25 @@ namespace MVC.Controllers
 
             }
 
-
+            //BTC API
             BitcoinApi bitcoin;
 
             using (var data = new WebClient())
             {
-                string response = data.DownloadString("https://bitbay.net/API/Public/btc/ticker.json");
-                bitcoin = JsonConvert.DeserializeObject<BitcoinApi>(response);
-                var price = bitcoin.Average;
-                ViewBag.BitcoinPrice = price;
+                try
+                {
+                    string response = data.DownloadString("https://bitbay.net/API/Public/btc/ticker.json");
+                    bitcoin = JsonConvert.DeserializeObject<BitcoinApi>(response);
+                    var price = bitcoin.Average;
+                    ViewBag.BitcoinPrice = price;
+                }
+                catch (Exception ex)
+                {
+                    if (ex is ArgumentNullException || ex is WebException)
+                    {
+                        ViewBag.BitcoinPrice = 0;
+                    }
+                }
             }
 
 
@@ -97,62 +108,92 @@ namespace MVC.Controllers
             return View(await artPieces.AsNoTracking().ToListAsync());
 
         }
-
-        // GET: ArtPieces/Details/5
+        //Details
         [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
+            BitcoinApi bitcoin;
+
+            using (var data = new WebClient())
+            {
+                try
+                {
+                    string response = data.DownloadString("https://bitbay.net/API/Public/btc/ticker.json");
+                    bitcoin = JsonConvert.DeserializeObject<BitcoinApi>(response);
+                    var price = bitcoin.Average;
+                    ViewBag.BitcoinPrice = price;
+                }
+                catch (Exception ex)
+                {
+                    if (ex is ArgumentNullException || ex is WebException)
+                    {
+                        ViewBag.BitcoinPrice = 0;
+                    }
+                }
+            }
             if (id == null)
             {
                 return NotFound();
             }
 
-            var artPiece = await _context.ArtPiece
-                .FirstOrDefaultAsync(m => m.ArtPieceId == id);
-            if (artPiece == null)
-            {
-                return NotFound();
-            }
 
-            return View(artPiece);
+            try
+            {
+                var artPiece = await _context.ArtPiece
+                .FirstOrDefaultAsync(m => m.ArtPieceId == id);
+                if (artPiece == null)
+                {
+                    return NotFound();
+                }
+                return View(artPiece);
+            }
+            catch (DbUpdateException)
+            {
+                return View("Error");
+            }
         }
 
-        // GET: ArtPieces/Create
+        //Get - Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: ArtPieces/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //Post - Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ArtPieceId,Author,Info,ModifiedDate,AuthorsNote,TypeOfArt,Style,Reserved,PictureFile,Price,Horizontal")] ArtPiece artPiece)
         {
             if (ModelState.IsValid)
             {
-                // saving pictures of art pieces to wwwroot/StoredPictures 
                 string wwwRootPath = _hostEnvironment.WebRootPath;
                 string fileName = Path.GetFileNameWithoutExtension(artPiece.PictureFile.FileName);
                 string extension = Path.GetExtension(artPiece.PictureFile.FileName);
                 artPiece.PicUrl = fileName = fileName + DateTime.Now.ToString("yymmss") + extension;
                 string path = Path.Combine(wwwRootPath + "/StoredPictures/", fileName);
 
-                using (var fileStream = new FileStream(path, FileMode.Create))
+                try
                 {
-                    await artPiece.PictureFile.CopyToAsync(fileStream);
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await artPiece.PictureFile.CopyToAsync(fileStream);
+                    }
+                    _context.Add(artPiece);
+                    await _context.SaveChangesAsync();
+                    Message = $"Art {artPiece.Info} added";
+                    ArtAction = "Create";
                 }
-                _context.Add(artPiece);
-                await _context.SaveChangesAsync();
-                Message = $"Art {artPiece.Info} added";
-                ArtAction = "Create";
+                catch (DbUpdateException)
+                {
+                    return View("Error");
+                }
+
                 return RedirectToAction(nameof(Index));
             }
             return View(artPiece);
         }
 
-        // GET: ArtPieces/Edit/5
+        //Get - Edit
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -160,20 +201,24 @@ namespace MVC.Controllers
                 return NotFound();
             }
 
-            var artPiece = await _context.ArtPiece.FindAsync(id);
-
-            
-
-            if (artPiece == null)
+            try
             {
-                return NotFound();
+                var artPiece = await _context.ArtPiece.FindAsync(id);
+
+                if (artPiece == null)
+                {
+                    return NotFound();
+                }
+                return View(artPiece);
             }
-            return View(artPiece);
+            catch
+            {
+                return View("Error");
+            }
+
         }
 
-        // POST: ArtPieces/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //Post - Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ArtPieceId,Author,Info,ModifiedDate,AuthorsNote,TypeOfArt,Style,Reserved,PicUrl,Horizontal,Price")] ArtPiece artPiece)
@@ -208,7 +253,7 @@ namespace MVC.Controllers
             return View(artPiece);
         }
 
-        // GET: ArtPieces/Delete/5
+        // Get - Delete
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -216,27 +261,43 @@ namespace MVC.Controllers
                 return NotFound();
             }
 
-            var artPiece = await _context.ArtPiece
-                .FirstOrDefaultAsync(m => m.ArtPieceId == id);
-            if (artPiece == null)
+            try
             {
-                return NotFound();
+                var artPiece = await _context.ArtPiece
+                .FirstOrDefaultAsync(m => m.ArtPieceId == id);
+                if (artPiece == null)
+                {
+                    return NotFound();
+                }
+
+                return View(artPiece);
+            }
+            catch
+            {
+                return View("Error");
             }
 
-            return View(artPiece);
         }
 
-        // POST: ArtPieces/Delete/5
+        // Post - Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var artPiece = await _context.ArtPiece.FindAsync(id);
-            _context.ArtPiece.Remove(artPiece);
-            await _context.SaveChangesAsync();
-            Message = $"Art {artPiece.Info} deleted";
-            ArtAction = "Delete";
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                var artPiece = await _context.ArtPiece.FindAsync(id);
+                _context.ArtPiece.Remove(artPiece);
+                await _context.SaveChangesAsync();
+                Message = $"Art {artPiece.Info} deleted";
+                ArtAction = "Delete";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (DbUpdateException)
+            {
+                return View("Error");
+            }
+
         }
 
         private bool ArtPieceExists(int id)

@@ -1,11 +1,31 @@
 ﻿<Properties StartupConfiguration="{6D392BB8-9567-49E7-95AF-323BE1DCCBBF}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Areas/Identity/Pages/Account/Login.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/ArtPieceController.cs">
     <Files>
-      <File FileName="Controllers/NewsController.cs" />
-      <File FileName="Data/ApplicationDbContext.cs" />
-      <File FileName="appsettings.json" />
-      <File FileName="Areas/Identity/Pages/Account/Login.cshtml" Line="82" Column="30" />
-      <File FileName="Views/Shared/_Layout.cshtml" Line="27" Column="26" />
+      <File FileName="Areas/Identity/Pages/Account/Login.cshtml.cs" Line="15" Column="1" IsPinned="True" />
+      <File FileName="Views/Home/Index.cshtml" IsPinned="True" />
+      <File FileName="Data/ApplicationDbContext.cs" IsPinned="True" />
+      <File FileName="Views/ArtPieces/Index.cshtml" IsPinned="True" />
+      <File FileName="Views/News/Create.cshtml" Line="34" Column="19" IsPinned="True" />
+      <File FileName="Views/Shared/_Layout.cshtml" Line="20" Column="98" />
+      <File FileName="Controllers/NewsController.cs" Line="37" Column="25" />
+      <File FileName="Models/News.cs" Line="1" Column="1" />
+      <File FileName="Views/ArtPieces/Create.cshtml" />
+      <File FileName="Views/News/Index.cshtml" />
+      <File FileName="Views/ArtPieces/Details.cshtml" />
+      <File FileName="Views/News/Edit.cshtml" Line="35" Column="19" />
+      <File FileName="Controllers/ArtPieceController.cs" Line="1" Column="1" />
+      <File FileName="Models/BitcoinApi.cs" Line="1" Column="1" />
+      <File FileName="Views/ArtPieces/Edit.cshtml" />
+      <File FileName="Models/ArtPiece.cs" Line="68" Column="39" />
+      <File FileName="Views/News/Details.cshtml" />
+      <File FileName="Views/_ViewStart.cshtml" />
+      <File FileName="Views/Index.cshtml" />
+      <File FileName="Startup.cs" />
+      <File FileName="Program.cs" />
+      <File FileName="Areas/Identity/Pages/Account/Login.cshtml" />
+      <File FileName="Controllers/HomeController.cs" Line="1" Column="1" />
+      <File FileName="Areas/Identity/Pages/Account/Register.cshtml.cs" />
+      <File FileName="Controllers/ArtPiecesApi.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,19 +34,24 @@
             <Node name="MVC" expanded="True">
               <Node name="Areas" expanded="True">
                 <Node name="Identity" expanded="True">
+                  <Node name="Data" expanded="True" />
                   <Node name="Pages" expanded="True">
                     <Node name="Account" expanded="True">
-                      <Node name="Login.cshtml" selected="True" />
+                      <Node name="Login.cshtml" expanded="True" />
                       <Node name="Register.cshtml" expanded="True" />
                     </Node>
                   </Node>
                 </Node>
               </Node>
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="ArtPieceController.cs" selected="True" />
+              </Node>
               <Node name="Data" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="ArtPieces" expanded="True" />
+                <Node name="Home" expanded="True" />
+                <Node name="News" expanded="True" />
                 <Node name="Shared" expanded="True" />
               </Node>
             </Node>
@@ -35,7 +60,7 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.MVC PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.ItemProperties.MVC PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

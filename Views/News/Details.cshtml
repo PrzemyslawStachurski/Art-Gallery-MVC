@@ -5,36 +5,48 @@
 }
 
 <h1>Details</h1>
-
+@if (ViewContext.HttpContext.User.IsInRole("Administrator"))
+{
+    <a class="btn btn-primary custom-button" asp-action="Edit" asp-route-id="@Model.NewsId">Edit</a>
+    <a class="btn btn-danger custom-button" asp-action="Delete" asp-route-id="@Model.NewsId">Delete</a>}
 <div>
     <h4>News</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.NewsAuthor)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.NewsAuthor)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Subtitle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Subtitle)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Content)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Content)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.LastModified)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.LastModified)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.NewsId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
 
-<script>
-    
-</script>
+<script></script>

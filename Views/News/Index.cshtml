@@ -1,47 +1,37 @@
 @model IEnumerable<MVC.Models.News>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "News";
 }
 
-<h1>Index</h1>
+<h1>News</h1>
+<div class="text">
+    @if (ViewContext.HttpContext.User.IsInRole("Administrator"))
+    {<a class="btn btn-primary search-button" asp-action="Create" asp-route-id="@Model">Create new</a>}
+</div>
+<div class="row justify-content-center">
+    @foreach (var item in Model)
+    {
+            <div class="card justify-content-center mt-5" style="width: 99%;">
+                <div class="row no-gutters justify-content-center">
+                    <div class="col-sm-5">
+                        <img class="card-img" src="~/StoredNewsPictures/@(item.PicUrl)">
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Title</h5>
+                            <p class="card-text">@item.Subtitle</p>
+                            <p class="card-text">@item.Content</p>
+                            <a class="btn btn-primary search-button" asp-action="Details" asp-route-id="@item.NewsId">Details</a>
+                        </div>
+                        <p class="card-text author text-right secondary text-secondary mr-5">@item.NewsAuthor</p>
+                    </div>
+                </div>
+            </div>
+    }
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NewsAuthor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Content)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastModified)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NewsAuthor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Content)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastModified)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.NewsId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.NewsId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.NewsId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<style>
+   
+</style>
+

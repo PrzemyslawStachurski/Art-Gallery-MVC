@@ -98,6 +98,9 @@
             </form>
         </div>
 
+        <div class="row justify-content-center">
+            <h6 class="mt-4">Sort by:</h6>
+        </div>
 
         <div class="row filter-box">
             <div class="filter-box-name"></div>
@@ -121,14 +124,21 @@
                         <img class="card-img-top" src="~/StoredPictures/@(item.PicUrl)" alt="Card Image" />
                     </div>
                 </a>
-                <div class="card-body text-center bg-light">
-                    <h6 class="card-title">@(item.Author)</h6>
-                    <p class="card-text ">@(item.Info)</p>
+                <div class="card-body text-left bg-light p-3">
+                    <h5 class="card-title">@(item.Author)</h5>
+                    <h6 class="card-text ">@(item.Info)</h6>
                     <p class="card-text ">@(item.AuthorsNote)</p>
                     <p class="card-text ">USD: @(item.Price)</p>
                     <p class="card-text ">@(item.Style)</p>
                     <p class="card-text ">@(item.TypeOfArt)</p>
-                    <p class="card-text ">BTC: @(item.Price/(decimal)(ViewBag.BitcoinPrice))</p>
+                    @if (ViewBag.BitcoinPrice != 0)
+                    {
+                        <p class="card-text "><small style="font-size:0.6em;">BTC: @(item.Price/(decimal)(ViewBag.BitcoinPrice))</small></p>
+                    }
+                    else
+                    {
+                        <p class="card-text ">"Error"</p>
+                    }
                 </div>
             </div>}
     </div>

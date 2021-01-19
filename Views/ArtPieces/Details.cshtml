@@ -38,6 +38,14 @@
                         <p class="mb-0 mt-2 font-italic">Opis: @(Model.AuthorsNote)</p>
                         <p class="mb-0 mt-2 font-italic">Cena: @(Model.Price)</p>
                         <p class="mb-0 mt-2 font-italic">Typ: @(Model.TypeOfArt)</p>
+                        @if (ViewBag.BitcoinPrice != 0)
+                        {
+                            <p class="mb-0 mt-2 font-italic">BTC: @(Model.Price/(decimal)(ViewBag.BitcoinPrice))</p>
+                        }
+                        else
+                        {
+                            <p class="card-text ">"Error"</p>
+                        }
                     </div>
 
                     <div class="pt-4 m-4 border-top text-right">

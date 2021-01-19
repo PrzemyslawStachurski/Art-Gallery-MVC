@@ -27,13 +27,14 @@ namespace MVC.Controllers
         }
 
         // GET: News
-        [Authorize(Roles = "Administrator,User")]
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _context.News.ToListAsync());
         }
 
         // GET: News/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -62,7 +63,7 @@ namespace MVC.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NewsId,NewsAuthor,Content,LastModified,PictureFile")] News news)
+        public async Task<IActionResult> Create([Bind("NewsId,NewsAuthor,Content,LastModified,PictureFile,Title,Subtitle")] News news)
         {
             if (ModelState.IsValid)
             {
@@ -105,7 +106,7 @@ namespace MVC.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NewsId,NewsAuthor,Content,LastModified,PicUrl")] News news)
+        public async Task<IActionResult> Edit(int id, [Bind("NewsId,NewsAuthor,Content,LastModified,PicUrl,Title,Subtitle")] News news)
         {
             if (id != news.NewsId)
             {

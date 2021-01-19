@@ -18,7 +18,7 @@ namespace MVC.Models
         [DisplayName("Author")]
         [StringLength(70, ErrorMessage = "Author`s name cannot exceed 70 characters.")]
         [RegularExpression(@"^([^0-9]*)$$",//regex for names 
-            ErrorMessage ="Authors name cannot include any numbers and special characters and must begin with capital letters")]
+            ErrorMessage ="Authors name cannot include any numbers")]
 
         public string Author { get; set; }
 

@@ -15,11 +15,19 @@ namespace MVC.Models
         [DisplayName("ID")]
         public int NewsId { get; set; }
 
-        [DisplayName("Author")]
-        [StringLength(70, ErrorMessage = "Author`s name cannot exceed 70 characters.")]
-        [RegularExpression(@"^([a - zA - Z])\s + ([a - zA - Z])$",//regex for names 
-            ErrorMessage = "Authors name cannot include any numbers and special characters and must begin with capital letters")]
+        [DisplayName("Title")]
+        [StringLength(70, ErrorMessage = "Title cannot exceed 70 characters.")]
+        public string Title { get; set; }
 
+
+        [DisplayName("Subtitle")]
+        [StringLength(70, ErrorMessage = "Subitle cannot exceed 70 characters.")]
+        public string Subtitle { get; set; }
+
+        [DisplayName("News Author")]
+        [StringLength(70, ErrorMessage = "Authors name cannot exceed 70 characters.")]
+        [RegularExpression(@"^([^0-9]*)$$",//regex for names 
+            ErrorMessage = "Authors name cannot include any numbers ")]
         public string NewsAuthor { get; set; }
 
         [DisplayName("Content")]
@@ -30,6 +38,11 @@ namespace MVC.Models
         [DisplayName("Last Updated")]
         [DisplayFormat(DataFormatString = "{0: dd-MM-yyy}", ApplyFormatInEditMode = true)]
         public DateTime LastModified { get; set; }
+        public News()
+        {
+            this.LastModified = DateTime.Now;
+        }
+
 
         [DisplayName("Picture URL")]
         public string PicUrl { get; set; }
